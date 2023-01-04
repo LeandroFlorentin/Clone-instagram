@@ -1,0 +1,213 @@
+.container {
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    justify-content: center;
+}
+
+.contenedorIngreso {
+    width: 350px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.containerDatos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    position: relative;
+    margin-top: 35px;
+}
+
+.instagram {
+    height: 51px;
+    margin: 40px 0 30px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.email {
+    margin: 4px 40px;
+    padding: 10px 10px;
+    border: 1px solid rgb(220, 220, 220);
+    background-color: rgb(250, 250, 250);
+    border-radius: 2px;
+}
+
+.email:focus {
+    outline: none;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.email::placeholder {
+    color: rgb(180, 180, 180);
+    font-size: 12px;
+}
+
+.contraseña {
+    margin: 4px 40px;
+    padding: 10px 10px;
+    border: 1px solid rgb(220, 220, 220);
+    background-color: rgb(250, 250, 250);
+    border-radius: 2px;
+}
+
+.contraseña:focus {
+    outline: none;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.contraseña::placeholder {
+    color: rgb(180, 180, 180);
+    font-size: 12px;
+}
+
+.botonDes {
+    margin: 8px 40px;
+    padding: 8px 0;
+    border-radius: 5px;
+    border: none;
+    background-color: #47afff;
+    color: #fff;
+    cursor: not-allowed;
+    pointer-events: none;
+    font-weight: 700;
+}
+
+.containerLineas {
+    display: flex;
+    position: relative;
+    height: 40px;
+    width: 100%;
+}
+
+.lineaUno {
+    height: 1px;
+    width: 110px;
+    background-color: #ccc;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+}
+
+.circulo {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 2px solid #888;
+    position: absolute;
+    left: 48.5%;
+    top: 40%;
+}
+
+.lineaDos {
+    height: 1px;
+    width: 110px;
+    background-color: #ccc;
+    position: absolute;
+    left: 40px;
+    top: 50%;
+}
+
+.containerFace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 40px;
+    cursor: pointer;
+}
+
+.facebook {
+    width: 17px;
+    height: 17px;
+    margin-right: 10px;
+}
+
+.iniciar {
+    color: #385185;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.olvidado {
+    margin: 0px 40px 25px 40px;
+    text-decoration: none;
+    color: #00376b;
+    font-size: 12px;
+}
+
+.containerNo {
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.descarga {
+    margin: 15px 40px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.containerImg {
+    position: relative;
+    width: 100%;
+    margin: 2px 40px;
+}
+
+.google {
+    width: 134px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.micro {
+    margin-left: 15px;
+    width: 110px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.containerCelu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registrate {
+    color: #0095f6;
+    text-decoration: none;
+}
+
+@media(max-width:875px) {
+    .containerCelu {
+        display: none;
+    }
+}
+
+@media(max-width:450px) {
+    .containerDatos {
+        border: none;
+        background-color: transparent;
+    }
+
+    .containerNo {
+        border: none;
+    }
+}
