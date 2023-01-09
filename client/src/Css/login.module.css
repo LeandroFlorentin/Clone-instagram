@@ -23,7 +23,7 @@
     background-color: rgb(255, 255, 255);
     align-items: center;
     position: relative;
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
 .instagram {
@@ -77,13 +77,28 @@
 .botonDes {
     margin: 8px 40px;
     padding: 8px 0;
-    border-radius: 5px;
+    border-radius: 8px;
     border: none;
     background-color: #47afff;
     color: #fff;
     cursor: not-allowed;
     pointer-events: none;
     font-weight: 700;
+}
+
+.botonAct {
+    margin: 8px 40px;
+    padding: 8px 0;
+    border-radius: 8px;
+    border: none;
+    background-color: #0095f6;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.botonAct:hover {
+    background-color: #0a68f5cc;
 }
 
 .containerLineas {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from '../../Css/login.module.css'
 import Instagram from '../../Images/Login/instagram.png'
 import Facebook from '../../Images/Login/facebook.png'
@@ -8,6 +8,23 @@ import Micro from '../../Images/Login/microsoft.png'
 import Footer from '../../Components/Footer'
 
 const Login = () => {
+
+    const [login, setLogin] = useState({
+        email: '',
+        password: ''
+    })
+
+    const escribiendo = (e) => {
+        setLogin({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const logeando = (e) => {
+        e.preventDefault()
+        console.log("logeando")
+    }
+
     return (
         <>
             <div
@@ -21,11 +38,25 @@ const Login = () => {
                         <div>
                             <img src={Instagram} className={style.instagram} alt='instagram' />
                         </div>
-                        <form className={style.form}>
-                            <input className={style.email} type='email' placeholder='Teléfono, usuario o correo electrónico' />
-                            <input className={style.contraseña} type='password' placeholder='Contraseña' />
+                        <form className={style.form} onSubmit={logeando}>
+                            <input
+                                className={style.email}
+                                type='email'
+                                placeholder='Teléfono, usuario o correo electrónico'
+                                value={login.email}
+                                onChange={escribiendo}
+                                name='email'
+                            />
+                            <input
+                                className={style.contraseña}
+                                type='password'
+                                placeholder='Contraseña'
+                                value={login.password}
+                                onChange={escribiendo}
+                                name='password'
+                            />
                             <button
-                                className={`${false ? style.botonAct : style.botonDes}`}
+                                className={`${(login.password && login.email !== "") ? style.botonAct : style.botonDes}`}
                                 type='submit'
                             >Entrar</button>
                         </form>
