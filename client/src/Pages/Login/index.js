@@ -9,6 +9,7 @@ import Footer from '../../Components/Footer'
 
 const Login = () => {
 
+    const [correcta, setCorrecta] = useState(true)
     const [login, setLogin] = useState({
         email: '',
         password: ''
@@ -22,7 +23,6 @@ const Login = () => {
 
     const logeando = (e) => {
         e.preventDefault()
-        console.log("logeando")
     }
 
     return (
@@ -42,7 +42,7 @@ const Login = () => {
                             <input
                                 className={style.email}
                                 type='email'
-                                placeholder='Teléfono, usuario o correo electrónico'
+                                placeholder='Usuario o correo electrónico'
                                 value={login.email}
                                 onChange={escribiendo}
                                 name='email'
@@ -58,7 +58,7 @@ const Login = () => {
                             <button
                                 className={`${(login.password && login.email !== "") ? style.botonAct : style.botonDes}`}
                                 type='submit'
-                            >Entrar</button>
+                            >Iniciar sesión</button>
                         </form>
                         <div className={style.containerLineas}>
                             <div className={style.lineaUno}></div>
@@ -69,10 +69,13 @@ const Login = () => {
                             <img src={Facebook} className={style.facebook} alt='Facebook' />
                             <span className={style.iniciar}>Iniciar sesión con Facebook</span>
                         </div>
+                        <div hidden={correcta} className={correcta ? null : style.noCorrecta}>
+                            <p hidden={correcta}>La contraseña no es correcta Compruébala</p>
+                        </div>
                         <a
                             className={style.olvidado}
                             href='http://localhost:3000/registrar'
-                        >¿Has olvidado la contraseña?</a>
+                        >¿Olvidaste tu contraseña?</a>
                     </div>
                     <div className={style.containerNo}>
                         <span>¿No tienes una cuenta? <a className={style.registrate} href='http://localhost:3000/registrar'>Registrate</a></span>
