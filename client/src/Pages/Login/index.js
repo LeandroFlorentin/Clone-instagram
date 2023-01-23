@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { iniciandoSesion } from '../../Redux/Actions';
 import style from '../../Css/login.module.css'
 import Instagram from '../../Images/Login/instagram.png'
 import Facebook from '../../Images/Login/facebook.png'
@@ -8,6 +11,8 @@ import Micro from '../../Images/Login/microsoft.png'
 import Footer from '../../Components/Footer'
 
 const Login = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [correcta, setCorrecta] = useState(true)
     const [login, setLogin] = useState({
@@ -17,12 +22,14 @@ const Login = () => {
 
     const escribiendo = (e) => {
         setLogin({
+            ...login,
             [e.target.name]: e.target.value
         })
     }
 
     const logeando = (e) => {
         e.preventDefault()
+        dispatch(iniciandoSesion(login)).then(() => navigate('/inicio'))
     }
 
     return (

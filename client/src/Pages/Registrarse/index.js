@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../../Components/Footer'
 import Instagram from '../../Images/Login/instagram.png'
 import style from '../../Css/registrarse.module.css'
 import Facebook from '../../Images/facebook blanco.jpg'
+import { crearCuenta } from '../../Redux/Actions'
 
 const Registrarse = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [datos, setDatos] = useState({
     correo: "",
     nombre: "",
     usuario: "",
-    contraseña: ""
+    contrasena: ""
   })
 
   const registrando = (e) => {
@@ -19,11 +22,15 @@ const Registrarse = () => {
       ...datos,
       [e.target.name]: e.target.value
     })
+    setData(true)
   }
-
   const registro = (e) => {
     e.preventDefault()
-    dispatch(crearCuenta(datos))
+    if (isValidEmail(datos.correo) && datos.contrasena.length > 8) dispatch(crearCuenta(datos)).then(() => navigate('/inicio'))
+  }
+
+  function isValidEmail(mail) {
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail);
   }
 
   return (
@@ -69,12 +76,17 @@ const Registrarse = () => {
             className={style.email}
             type='password'
             placeholder='Contraseña'
-            value={datos.contraseña}
+            value={datos.contrasena}
             onChange={registrando}
-            name='contraseña'
+            name='contrasena'
           />
           <button
-            className={`${(datos.contraseña && datos.numero !== "") ? style.botonAct : style.botonDes}`}
+            className={`${(datos.contrasena.length > 8 && datos.correo !== "")
+              ?
+              style.botonAct
+              :
+              style.botonDes
+              }`}
             type='submit'
           >Registrarse</button>
         </form>
