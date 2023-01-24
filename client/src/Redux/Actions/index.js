@@ -6,6 +6,6 @@ export const crearCuenta = (cuenta) => async () => {
 }
 
 export const iniciandoSesion = (cuenta) => async () => {
-  console.log(cuenta)
-  await axios.post('http://localhost:3001/iniciandoSesion', cuenta)
+  const respuesta = await axios.post('http://localhost:3001/iniciandoSesion', cuenta)
+  return respuesta.data.valor
 }

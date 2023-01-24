@@ -3,14 +3,13 @@ const express = require('express');
 
 const app = express()
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
   const { email, password } = req.body;
-  console.log(email)
   try {
-    const mail = Cuenta.findOne({ where: { correo: email } })
-    const contrasena = Cuenta.findOne({ where: { contrasena: password } })
-    if (mail || contrasena) res.status(404).json("Contraseña incorrecta.")
-    res.status(200).json("Contraseña correcta")
+    const mail = await Cuenta.findOne({ where: { correo: email } })
+    const contrasena = await Cuenta.findOne({ where: { contrasena: password } })
+    if (mail && contrasena) res.status(200).json({ valor: true })
+    else res.status(200).json({ valor: false })
   } catch (error) {
     res.status(404).json({ message: error })
   }

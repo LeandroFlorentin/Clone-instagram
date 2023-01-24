@@ -29,7 +29,7 @@ const Login = () => {
 
     const logeando = (e) => {
         e.preventDefault()
-        dispatch(iniciandoSesion(login)).then(() => navigate('/inicio'))
+        dispatch(iniciandoSesion(login)).then((res) => res ? navigate('/inicio') : setCorrecta(false))
     }
 
     return (
