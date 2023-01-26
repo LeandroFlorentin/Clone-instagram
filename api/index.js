@@ -6,7 +6,7 @@ const {
     PORT
 } = process.env
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
     server.listen(PORT || 3001, () => {
         console.log("andando en " + PORT)
     })

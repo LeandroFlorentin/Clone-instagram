@@ -8,6 +8,8 @@ import Facebook from '../../Images/facebook blanco.jpg'
 import { crearCuenta } from '../../Redux/Actions'
 import Google from '../../Images/Login/googlePlay.png'
 import Micro from '../../Images/Login/microsoft.png'
+import db from '../../Utils/firebase.js'
+import { signInWithPopup, FacebookAuthProvider } from 'firebase/auth'
 
 const Registrarse = () => {
   const navigate = useNavigate()
@@ -19,12 +21,17 @@ const Registrarse = () => {
     contrasena: ""
   })
 
+  const iniciarFace = async () => {
+    const provider = new FacebookAuthProvider()
+    const result = await signInWithPopup(db, provider)
+    console.log(result.user)
+  }
+
   const registrando = (e) => {
     setDatos({
       ...datos,
       [e.target.name]: e.target.value
     })
-    setData(true)
   }
   const registro = (e) => {
     e.preventDefault()
@@ -41,7 +48,7 @@ const Registrarse = () => {
         <div className={style.containerForm}>
           <img src={Instagram} className={style.instagram} alt='instagram' />
           <p className={style.textReg}>Regístrate para ver fotos y videos de tus amigos.</p>
-          <div className={style.containerFace}>
+          <div className={style.containerFace} onClick={iniciarFace}>
             <img src={Facebook} className={style.facebook} alt='Facebook' />
             <span className={style.iniciar}>Iniciar sesión con Facebook</span>
           </div>

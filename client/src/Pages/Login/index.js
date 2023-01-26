@@ -9,10 +9,18 @@ import Celular from '../../Components/Celular'
 import Google from '../../Images/Login/googlePlay.png'
 import Micro from '../../Images/Login/microsoft.png'
 import Footer from '../../Components/Footer'
+import { iniciarFacebook } from '../../Redux/Actions'
+import db from '../../Utils/firebase.js'
+import { signInWithPopup, FacebookAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 
 const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const iniciarFace = async () => {
+        const provider = new FacebookAuthProvider()
+        await signInWithPopup(db, provider)
+    }
 
     const [correcta, setCorrecta] = useState(true)
     const [login, setLogin] = useState({
@@ -30,6 +38,10 @@ const Login = () => {
     const logeando = (e) => {
         e.preventDefault()
         dispatch(iniciandoSesion(login)).then((res) => res ? navigate('/inicio') : setCorrecta(false))
+    }
+
+    const iniciamosFacebook = () => {
+        iniciarFacebook()
     }
 
     return (
@@ -72,7 +84,7 @@ const Login = () => {
                             <div className={style.circulo}></div>
                             <div className={style.lineaDos}></div>
                         </div>
-                        <div className={style.containerFace}>
+                        <div className={style.containerFace} onClick={iniciarFace}>
                             <img src={Facebook} className={style.facebook} alt='Facebook' />
                             <span className={style.iniciar}>Iniciar sesión con Facebook</span>
                         </div>
